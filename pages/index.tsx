@@ -6,18 +6,18 @@ import Post, { PostProps } from "../components/Post"
 import prisma from '../lib/prisma'
 
 export const getStaticProps: GetStaticProps = async () => {
-  /*const feed = [
-    {
-      id: "1",
-      title: "Prisma is the perfect ORM for Next.js",
-      content: "[Prisma](https://github.com/prisma/prisma) and Next.js go _great_ together!",
-      published: false,
-      author: {
-        name: "Nikolas Burk",
-        email: "burk@prisma.io",
-      },
-    },
-  ]*/
+  // const feed = [
+  //   {
+  //     id: "1",
+  //     title: "Prisma is the perfect ORM for Next.js",
+  //     content: "[Prisma](https://github.com/prisma/prisma) and Next.js go _great_ together!",
+  //     published: false,
+  //     author: {
+  //       name: "Nikolas Burk",
+  //       email: "burk@prisma.io",
+  //     },
+  //   },
+  // ]
 
   const feed = await prisma.post.findMany({
     where: { published: true },
@@ -27,6 +27,8 @@ export const getStaticProps: GetStaticProps = async () => {
       },
     },
   });
+
+  console.log("FEED length:", feed.length);
 
   return { 
     props: { feed }, 
