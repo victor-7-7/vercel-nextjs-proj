@@ -36,6 +36,8 @@ export const getStaticProps: GetStaticProps = async () => {
   }
 }
 
+// In typescript the type keyword defines an alias to a type.
+// We can also use the type keyword to define user defined types.
 type Props = {
   feed: PostProps[]
 }
