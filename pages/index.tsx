@@ -31,7 +31,13 @@ export const getStaticProps: GetStaticProps = async () => {
   console.log("FEED length:", feed.length);
 
   return { 
-    props: { feed }, 
+    props: { feed },
+    // Once the app is deployed to production, the feed will be updated
+    // at almost every 10 seconds when it receives a request. That's because
+    // you're using static site generation (SSG) via getStaticProps to
+    // retrieve the data for this view with Incremental Static Regeneration.
+    // If you want data to be updated "immediately", consider using
+    // On-Demand Incremental Static Regeneration.
     revalidate: 10 
   }
 }
